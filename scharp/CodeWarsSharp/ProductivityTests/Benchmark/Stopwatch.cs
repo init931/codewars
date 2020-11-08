@@ -30,8 +30,9 @@ namespace ProductivityTests {
                 timings[i] = stopwatch.Elapsed.TotalMilliseconds;
                 Console.WriteLine($"ti {i}. {timings[i]:N4} ms");
             }
-            Console.WriteLine($"total nmean: {ms:N4} ms");
-            return timings.normalizedMean();
+            var nmean = timings.normalizedMean();
+            Console.WriteLine($"total nmean: {nmean:N4} ms");
+            return nmean;
         }
 
         private static double normalizedMean(this ICollection<double> values) {
