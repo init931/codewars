@@ -32,15 +32,6 @@ namespace CodeWarsSharp.Kata {
                     res = res.Insert(i, "(");
                 }
             }
-
-            /*foreach (KeyValuePair<char, int> item in dict) {
-                if (item.Value > 1) {
-                    res = res.Replace(item.Key, ')');
-                }
-                else {
-                    res = res.Replace(item.Key, '(');
-                }
-            }*/
             return res;
         }
 
