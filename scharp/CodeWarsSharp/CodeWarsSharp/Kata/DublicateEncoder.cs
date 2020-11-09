@@ -68,7 +68,8 @@ namespace CodeWarsSharp.Kata {
         }
 
         /// <summary>
-        /// Результат хуже чем если напрямую работать со string. StringBuilder походу плохо переносить замены и инсерты(надо проверить) //!!!
+        /// Результат хуже чем если напрямую работать со string. StringBuilder походу плохо переносить замены и инсерты(надо проверить)
+        /// проверил, скорость неплохо проседает
         /// </summary>
         public static string DuplicateEncodeMy_StringBuilderWithRemoveAndInsert(string word) {
             var lower = word.ToLower();
@@ -96,6 +97,84 @@ namespace CodeWarsSharp.Kata {
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Избавление от StringContainChar ускорило код еще больше. реально, зачем мне нужен был отдельный метод?
+        /// </summary>
+        public static string DuplicateEncodeMy_WithoutStringContainChar(string word) {
+            var lower = word.ToLower();
+            var counts = new Dictionary<char, int>();
+            foreach (var ch in lower) {         ////
+                if (counts.ContainsKey(ch)) {
+                    counts[ch]++;
+                }
+                else {
+                    counts.Add(ch, 1);
+                }
+            }
+
+            for (int i = 0; i < lower.Length; i++) {
+                var ch = lower[i];
+                if (counts[ch] > 1) {
+                    lower = lower.Remove(i, 1);
+                    lower = lower.Insert(i, ")");
+                } else {
+                    lower = lower.Remove(i, 1);
+                    lower = lower.Insert(i, "(");
+                }
+            }
+            return lower;
+        }
+
+        /// <summary>
+        /// Быстрее за счет избавления от счетчика
+        /// </summary>
+        public static string DuplicateEncodeMy_WithoutStringContainChar_WithoutCounter(string word) {
+            var lower = word.ToLower();
+            var counts = new Dictionary<char, char>();
+            foreach (var ch in lower) {
+                if (!counts.ContainsKey(ch)) {   ////
+                    counts.Add(ch, '(');
+                }
+                else {
+                    counts[ch] = ')';
+                }
+            }
+
+            for (int i = 0; i < lower.Length; i++) {
+                var ch = lower[i];
+                if (counts[ch] == ')') {
+                    lower = lower.Remove(i, 1);
+                    lower = lower.Insert(i, ")");
+                } else {
+                    lower = lower.Remove(i, 1);
+                    lower = lower.Insert(i, "(");
+                }
+            }
+            return lower;
+        }
+
+        /// <summary>
+        /// Значительно быстрее чем предыдущий. Походу StringBuilder очень быстрая вещь если писать последовательно
+        /// </summary>
+        public static string DuplicateEncodeMy_WithoutStringContainChar_WithoutCounter_AndWithStringBuilder(string word) {
+            var lower = word.ToLower();
+            var map = new Dictionary<char, char>();
+            foreach (var ch in lower) {
+                if (!map.ContainsKey(ch)) {
+                    map.Add(ch, '(');
+                } else {
+                    map[ch] = ')';
+                }
+            }
+
+            var sp = new StringBuilder();               ////
+            for (int i = 0; i < lower.Length; i++) {
+                var ch = lower[i];
+                sp.Append(map[ch]);
+            }
+            return sp.ToString();
+        }
+
         #endregion
 
         public static int StringContainChar(string input, char search) {
@@ -108,11 +187,17 @@ namespace CodeWarsSharp.Kata {
             return count;
         }
 
-        public static string DuplicateEncode1Line(string word) {
+        /// <summary>
+        /// Не производительно, но в одну строку
+        /// </summary>
+        public static string DuplicateEncode_1Line(string word) {
             return new string(word.ToLower().Select(ch => word.ToLower().Count(innerCh => ch == innerCh) == 1 ? '(' : ')').ToArray());
         }
 
-        public static string DuplicateEncodeUpperDistinct(string word) {
+        /// <summary>
+        /// Рещение хорошо тем, что использует StringBuilder
+        /// </summary>
+        public static string DuplicateEncode_UpperDistinct(string word) {
             //var disct = word.ToUpper().Distinct();
             Dictionary<char, int> counts = new Dictionary<char, int>();
 
@@ -132,6 +217,37 @@ namespace CodeWarsSharp.Kata {
             }
 
             return builder.ToString();
+        }
+
+        /// <summary>
+        /// Крайне тяжелое решение по производительности
+        /// </summary>
+        public static string DuplicateEncode_PitMaster(string word) {
+            return GetEncodedString(word, GetDuplicateCharacters(word));
+        }
+
+
+        private static string GetEncodedString(string word, IEnumerable<char> duplicateCharacters) {
+            var newString = new StringBuilder();
+            word.ToLower().ToList().ForEach(c => newString.Append(duplicateCharacters.Contains(c) ? ")" : "("));
+            return newString.ToString();
+        }
+
+        private static IEnumerable<char> GetDuplicateCharacters(string word) {
+            return word.ToLower().GroupBy(c => c).Where(c => c.Count() > 1).Select(c => c.Key);
+        }
+
+        public static string DuplicateEncode_Split(string word) {
+            string retval = "";
+            word = word.ToLower();
+            for (int i = 0; i < word.Length; i++)
+                retval += (word.Split(word[i]).Length - 1 > 1 ? ')' : '(');
+            return retval;
+        }
+
+        public static string DuplicateEncode_Concat(string word) {
+            word = word.ToLower();
+            return string.Concat(word.Select(x => word.Count(w => w == x) > 1 ? ')' : '('));
         }
     }
 }

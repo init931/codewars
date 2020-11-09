@@ -5,6 +5,7 @@ using System.Threading;
 namespace ProductivityTests {
     /// <summary>
     /// https://www.codeproject.com/Articles/61964/Performance-Tests-Precise-Run-Time-Measurements-wi
+    /// не сказал бы что это работает. т к в винде процессы размазаны по всем ядрам и свободного процессора нет для ProcessorAffinity
     /// </summary>
     public static partial class Benchmark {
         public static void SeparateCpu() {
@@ -26,14 +27,9 @@ namespace ProductivityTests {
                 " mS: " + stopwatch.ElapsedMilliseconds);
             }
 
-            Process.GetCurrentProcess().ProcessorAffinity =
-        new IntPtr(2); // Uses the second Core or Processor for the Test
-            Process.GetCurrentProcess().PriorityClass =
-        ProcessPriorityClass.High;      // Prevents "Normal" processes 
-                                        // from interrupting Threads
-            Thread.CurrentThread.Priority =
-        ThreadPriority.Highest;     // Prevents "Normal" Threads 
-                                    // from interrupting this thread
+            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(2); // Uses the second Core or Processor for the Test 
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;      // Prevents "Normal" processes from interrupting Threads
+            Thread.CurrentThread.Priority = ThreadPriority.Highest;     // Prevents "Normal" Threads from interrupting this thread
 
             Console.WriteLine();
             Console.WriteLine();

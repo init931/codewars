@@ -16,8 +16,14 @@ namespace ProductivityTests {
                 //Kata.DuplicateEncode1Line(checkMessage); //90ms
                 //Kata.DuplicateEncodeUpperDistinct(checkMessage); //15ms
                 //Kata.DuplicateEncodeMy_ToUpper(checkMessage); //39ms
-                Kata.DuplicateEncodeMy_StringBuilderWithRemoveAndInsert(checkMessage); //55ms
-            }, 10000);
+                //Kata.DuplicateEncodeMy_StringBuilderWithRemoveAndInsert(checkMessage); //55ms
+                //Kata.DuplicateEncodeMy_WithoutStringContainChar(checkMessage);
+                //Kata.DuplicateEncodeMy_WithoutStringContainChar_WithoutCounter(checkMessage);
+                //Kata.DuplicateEncodeMy_WithoutStringContainChar_WithoutCounter_AndWithStringBuilder(checkMessage);
+                //Kata.DuplicateEncode_PitMaster(checkMessage);
+                //Kata.DuplicateEncode_Split(checkMessage);
+                Kata.DuplicateEncode_Concat(checkMessage);
+            }, 10000, 1000);
         }
     }
 }

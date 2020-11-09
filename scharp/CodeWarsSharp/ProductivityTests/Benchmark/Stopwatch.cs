@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ProductivityTests {
     public static partial class Benchmark {
-        public static double Stopwatch(Action action, int iterations) {
+        public static double Stopwatch(Action action, int iterations, int warmups = 1) {
             //clean Garbage
             GC.Collect();
 
@@ -16,7 +16,9 @@ namespace ProductivityTests {
             GC.Collect();
 
             //warm up
-            action();
+            for (int i = 0; i < warmups; i++) {
+                action();
+            }
 
             var stopwatch = new Stopwatch();
             var timings = new double[5];
