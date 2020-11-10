@@ -4,6 +4,20 @@ using CodeWarsSharp.Kata;
 namespace CodeWarsSharpNUnitTests {
     public class KataTests {
         [Test]
+        public void ArrayDiff() {
+            Assert.AreEqual(new int[] { 2 }, Kata.ArrayDiff(new int[] { 1, 2 }, new int[] { 1 }));
+            Assert.AreEqual(new int[] { 2, 2 }, Kata.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 1 }));
+            Assert.AreEqual(new int[] { 1 }, Kata.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 2 }));
+            Assert.AreEqual(new int[] { 1, 2, 2 }, Kata.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { }));
+            Assert.AreEqual(new int[] { }, Kata.ArrayDiff(new int[] { }, new int[] { 1, 2 }));
+        }
+
+        [Test]
+        public void ReversedStrings() {
+            Assert.AreEqual("dlrow", Kata.ReversedStrings("world"));
+        }
+
+        [Test]
         public void DuplicateEncoder() {
             Assert.AreEqual(")))))(", Kata.DuplicateEncode(" ( ( )"));
             Assert.AreEqual("(((", Kata.DuplicateEncode("din"));
