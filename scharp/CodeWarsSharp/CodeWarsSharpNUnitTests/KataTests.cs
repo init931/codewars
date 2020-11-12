@@ -4,6 +4,16 @@ using CodeWarsSharp.Kata;
 namespace CodeWarsSharpNUnitTests {
     public class KataTests {
         [Test]
+        public void WhoLikesIt() {
+            Assert.AreEqual("no one likes this", Kata.WhoLikesIt(new string[0]));
+            Assert.AreEqual("Peter likes this", Kata.WhoLikesIt(new string[] { "Peter" }));
+            Assert.AreEqual("Jacob and Alex like this", Kata.WhoLikesIt(new string[] { "Jacob", "Alex" }));
+            Assert.AreEqual("Max, John and Mark like this", Kata.WhoLikesIt(new string[] { "Max", "John", "Mark" }));
+            Assert.AreEqual("Alex, Jacob and 2 others like this", Kata.WhoLikesIt(new string[] { "Alex", "Jacob", "Mark", "Max" }));
+            Assert.AreEqual("Alex, Jacob and 3 others like this", Kata.WhoLikesIt(new string[] { "Alex", "Jacob", "Mark", "Max", "Griffin" }));
+        }
+
+        [Test]
         public void TakeATenMinuteWalk() {
             Assert.AreEqual(true, Kata.TakeATenMinuteWalk(new string[] { "n", "s", "n", "s", "n", "s", "n", "s", "n", "s" }), "should return true 1");
             Assert.AreEqual(false, Kata.TakeATenMinuteWalk(new string[] { "w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e" }), "should return false 2");
