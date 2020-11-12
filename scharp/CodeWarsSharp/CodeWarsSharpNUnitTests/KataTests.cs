@@ -4,6 +4,14 @@ using CodeWarsSharp.Kata;
 namespace CodeWarsSharpNUnitTests {
     public class KataTests {
         [Test]
+        public void TakeATenMinuteWalk() {
+            Assert.AreEqual(true, Kata.TakeATenMinuteWalk(new string[] { "n", "s", "n", "s", "n", "s", "n", "s", "n", "s" }), "should return true 1");
+            Assert.AreEqual(false, Kata.TakeATenMinuteWalk(new string[] { "w", "e", "w", "e", "w", "e", "w", "e", "w", "e", "w", "e" }), "should return false 2");
+            Assert.AreEqual(false, Kata.TakeATenMinuteWalk(new string[] { "w" }), "should return false 3");
+            Assert.AreEqual(false, Kata.TakeATenMinuteWalk(new string[] { "n", "n", "n", "s", "n", "s", "n", "s", "n", "s" }), "should return false 4");
+        }
+
+        [Test]
         public void ArrayDiff() {
             Assert.AreEqual(new int[] { 2 }, Kata.ArrayDiff(new int[] { 1, 2 }, new int[] { 1 }));
             Assert.AreEqual(new int[] { 2, 2 }, Kata.ArrayDiff(new int[] { 1, 2, 2 }, new int[] { 1 }));
