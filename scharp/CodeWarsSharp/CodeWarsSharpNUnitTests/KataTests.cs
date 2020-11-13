@@ -1,8 +1,15 @@
 ﻿using NUnit.Framework;
 using CodeWarsSharp.Kata;
+using System.Collections.Generic;
 
 namespace CodeWarsSharpNUnitTests {
     public class KataTests {
+        [Test]
+        public void NarcisssticNumber() {
+            Assert.AreEqual(true, Kata.NarcisssticNumber(1), "1 is narcissitic");
+            Assert.AreEqual(true, Kata.NarcisssticNumber(371), "371 is narcissitic");
+        }
+
         [Test]
         public void WhoLikesIt() {
             Assert.AreEqual("no one likes this", Kata.WhoLikesIt(new string[0]));
@@ -44,5 +51,23 @@ namespace CodeWarsSharpNUnitTests {
             Assert.AreEqual("))((", Kata.DuplicateEncode("(( @"));
             Assert.Pass();
         }
+    }
+
+    [TestFixture]
+    public class Sample_Test {
+        private static IEnumerable<TestCaseData> testCases {
+            get {
+                yield return new TestCaseData(1)
+                                .Returns(true)
+                                .SetDescription("1 is narcissitic");
+                yield return new TestCaseData(371)
+                                .Returns(true)
+                                .SetDescription("371 is narcissitic");
+
+            }
+        }
+
+        [Test, TestCaseSource("testCases")]
+        public bool Test(int n) => Kata.NarcisssticNumber(n);
     }
 }
