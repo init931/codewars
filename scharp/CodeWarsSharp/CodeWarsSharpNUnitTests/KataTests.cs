@@ -3,6 +3,7 @@ using CodeWarsSharp.Kata;
 using System.Collections.Generic;
 
 namespace CodeWarsSharpNUnitTests {
+    [TestFixture]
     public class KataTests {
         [Test]
         public void NarcisssticNumber() {
@@ -53,7 +54,6 @@ namespace CodeWarsSharpNUnitTests {
         }
     }
 
-    [TestFixture]
     public class Sample_Test {
         private static IEnumerable<TestCaseData> testCases {
             get {
@@ -68,6 +68,8 @@ namespace CodeWarsSharpNUnitTests {
         }
 
         [Test, TestCaseSource("testCases")]
-        public bool Test(int n) => Kata.NarcisssticNumber(n);
+        public bool Test(int n) {
+            return Kata.NarcisssticNumber(n);
+        }
     }
 }
