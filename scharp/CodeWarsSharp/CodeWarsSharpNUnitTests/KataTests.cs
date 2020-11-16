@@ -62,6 +62,18 @@ namespace CodeWarsSharpNUnitTests {
             Assert.AreEqual(new ulong[] { 34, 55, 0 }, Kata.ProductOfConsecutiveFibNumbers(800));
             Assert.AreEqual(new ulong[] { 0, 1, 1 }, Kata.ProductOfConsecutiveFibNumbers(0));
         }
+
+        [Test]
+        public void IsANumberPrime() {
+            Assert.AreEqual(false, Kata.IsANumberPrime(0));
+            Assert.AreEqual(false, Kata.IsANumberPrime(1));
+            Assert.AreEqual(true, Kata.IsANumberPrime(2));
+            Assert.AreEqual(true, Kata.IsANumberPrime(3));
+            Assert.AreEqual(true, Kata.IsANumberPrime(7));
+            Assert.AreEqual(true, Kata.IsANumberPrime(13));
+            Assert.AreEqual(false, Kata.IsANumberPrime(60));
+            Assert.AreEqual(true, Kata.IsANumberPrime(2147483647));
+        }
     }
 
     public class Sample_Test {
