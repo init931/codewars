@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace CodeWarsSharp.Kata {
     public partial class Kata {
         /// <summary>
@@ -23,6 +25,26 @@ namespace CodeWarsSharp.Kata {
                 if (n % i == 0) {
                     return false;
                 }
+            }
+
+            return true;
+        }
+
+        public static bool IsANumberPrime_TrialDivisionMethod(int n) {
+            var a = new List<double>();
+            var f = 3;
+            while (f * f <= n) {
+                if (n % f == 0) {
+                    return false;
+                    a.Add(f);
+                    n /= f;
+                }
+                else {
+                    f += 2;
+                }
+            }
+            if (n != 1) {
+                a.Add(n);
             }
 
             return true;
