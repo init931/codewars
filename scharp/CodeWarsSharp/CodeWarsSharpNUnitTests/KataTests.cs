@@ -65,14 +65,18 @@ namespace CodeWarsSharpNUnitTests {
 
         [Test]
         public void IsANumberPrime() {
-            Assert.AreEqual(false, Kata.IsANumberPrime_TrialDivisionMethod(0));
-            Assert.AreEqual(false, Kata.IsANumberPrime_TrialDivisionMethod(1));
-            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(2));
-            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(3));
-            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(7));
-            Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(13));
-            Assert.AreEqual(false, Kata.IsANumberPrime_TrialDivisionMethod(60));
-            //Assert.AreEqual(true, Kata.IsANumberPrime_TrialDivisionMethod(2147483647));
+            Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(0), "0");
+            Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(1), "1");
+            Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(2), "2");
+            Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(3), "3");
+            Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(4), "4");
+            Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(5), "5");
+            Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(6), "6");
+            Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(7), "7");
+            Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(8), "8");
+            Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(13), "13");
+            Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(60), "60");
+            Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(2147483647), "2147483647");
         }
     }
 

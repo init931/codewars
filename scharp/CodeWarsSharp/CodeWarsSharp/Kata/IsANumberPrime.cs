@@ -11,6 +11,8 @@ namespace CodeWarsSharp.Kata {
         /// greater than 1 that has no positive divisors other than 1 and itself.
         /// </summary>
         public static bool IsANumberPrime(int n) {
+            //работает, но IsANumberPrimeMy_TrialDivisionMethod() быстрее
+            //есть похожее решение которое быстре чем это если заменить (n + 1 / 2) на корень от n
             if (n <= 1) {
                 return false;
             }
@@ -30,23 +32,19 @@ namespace CodeWarsSharp.Kata {
             return true;
         }
 
-        public static bool IsANumberPrime_TrialDivisionMethod(int n) {
-            var a = new List<double>();
-            var f = 3;
-            while (f * f <= n) {
+        public static bool IsANumberPrimeMy_TrialDivisionMethod(int n) {
+            if (n <= 1) return false;
+            if (n == 2) return true;
+            if (n % 2 == 0) return false;
+            uint f = 3;
+            while (checked(f * f) <= n) {
                 if (n % f == 0) {
                     return false;
-                    a.Add(f);
-                    n /= f;
                 }
                 else {
                     f += 2;
                 }
             }
-            if (n != 1) {
-                a.Add(n);
-            }
-
             return true;
         }
     }
