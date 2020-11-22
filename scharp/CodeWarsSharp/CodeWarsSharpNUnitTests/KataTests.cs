@@ -78,6 +78,12 @@ namespace CodeWarsSharpNUnitTests {
             Assert.AreEqual(false, Kata.IsANumberPrimeMy_TrialDivisionMethod(60), "60");
             Assert.AreEqual(true, Kata.IsANumberPrimeMy_TrialDivisionMethod(2147483647), "2147483647");
         }
+
+        [Test]
+        public void DetectPangram() {
+            Assert.AreEqual(false, Kata.DetectPangramMy_GroupBy("qwert"));
+            Assert.AreEqual(true, Kata.DetectPangramMy_GroupBy("The quick brown fox jumps over the lazy dog."));
+        }
     }
 
     public class Sample_Test {
