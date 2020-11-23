@@ -84,6 +84,16 @@ namespace CodeWarsSharpNUnitTests {
             Assert.AreEqual(false, Kata.DetectPangramMy_GroupBy("qwert"));
             Assert.AreEqual(true, Kata.DetectPangramMy_GroupBy("The quick brown fox jumps over the lazy dog."));
         }
+
+        [Test]
+        public void BuildAPileOfCubes() {
+            Assert.AreEqual(45, Kata.BuildAPileOfCubes(1071225));
+            Assert.AreEqual(2022, Kata.BuildAPileOfCubes(4183059834009));
+            Assert.AreEqual(-1, Kata.BuildAPileOfCubes(24723578342962));
+            Assert.AreEqual(4824, Kata.BuildAPileOfCubes(135440716410000));
+            Assert.AreEqual(3568, Kata.BuildAPileOfCubes(40539911473216));
+            Assert.AreEqual(54877, Kata.BuildAPileOfCubes(2267343301934620009));
+        }
     }
 
     public class Sample_Test {
