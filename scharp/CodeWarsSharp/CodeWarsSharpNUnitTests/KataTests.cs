@@ -94,6 +94,21 @@ namespace CodeWarsSharpNUnitTests {
             Assert.AreEqual(3568, Kata.BuildAPileOfCubes(40539911473216));
             Assert.AreEqual(54877, Kata.BuildAPileOfCubes(2267343301934620009));
         }
+
+        [Test]
+        public void SumSquaredDivisors() {
+            Assert.AreEqual("[[1, 1], [42, 2500], [246, 84100]]", Kata.SumSquaredDivisors(1, 250));
+            Assert.AreEqual("[[42, 2500], [246, 84100]]", Kata.SumSquaredDivisors(42, 250));
+            Assert.AreEqual("[[287, 84100]]", Kata.SumSquaredDivisors(250, 500));
+        }
+
+        [Test]
+        public void EqualSidesOfAnArray() {
+            Assert.AreEqual(3, Kata.EqualSidesOfAnArray(new int[] { 1, 2, 3, 4, 3, 2, 1 }));
+            Assert.AreEqual(1, Kata.EqualSidesOfAnArray(new int[] { 1, 100, 50, -51, 1, 1 }));
+            Assert.AreEqual(-1, Kata.EqualSidesOfAnArray(new int[] { 1, 2, 3, 4, 5, 6 }));
+            Assert.AreEqual(3, Kata.EqualSidesOfAnArray(new int[] { 20, 10, 30, 10, 10, 15, 35 }));
+        }
     }
 
     public class Sample_Test {
