@@ -8,5 +8,6 @@
   <ItemGroup>
     <Folder Include="Kata\" />
     <Folder Include="Component\" />
+    <Folder Include="OOP\" />
   </ItemGroup>
 </Project>
