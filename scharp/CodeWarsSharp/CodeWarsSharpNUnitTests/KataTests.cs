@@ -112,9 +112,10 @@ namespace CodeWarsSharpNUnitTests {
 
         [Test]
         public void Brainfuck() {
-            //Assert.AreEqual("Codewars", Kata.Brainfuck(",+[-.,+]", "Codewars" + char.ConvertFromUtf32(255)), "Should return \"Codewars\" ");
-            //Assert.AreEqual("Codewars", Kata.Brainfuck(",[.[-],]", "Codewars" + char.ConvertFromUtf32(0)), "Should return \"Codewars\" ");
-            //Assert.AreEqual(char.ConvertFromUtf32(72), Kata.Brainfuck(",>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.", char.ConvertFromUtf32(8) + char.ConvertFromUtf32(9)), "Should return H");
+            Assert.AreEqual("Codewars", Kata.Brainfuck(",+[-.,+]", "Codewars" + char.ConvertFromUtf32(255)), "Should return \"Codewars\" ");
+            Assert.AreEqual("Codewars", Kata.Brainfuck(",[.[-],]", "Codewars" + char.ConvertFromUtf32(0)), "Should return \"Codewars\" ");
+            Assert.AreEqual(char.ConvertFromUtf32(72), Kata.Brainfuck(",>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.", char.ConvertFromUtf32(8) + char.ConvertFromUtf32(9)), "Should return H");
+            Assert.AreEqual("D", Kata.Brainfuck("+++++++++++++++++>++++<[>[->+>+<<]>>[-<<+>>]<<<-]>>.", ""));
             Assert.AreEqual("1, 1, 2, 3, 5, 8, 13, 21, 34, 55", Kata.Brainfuck(",>+>>>>++++++++++++++++++++++++++++++++++++++++++++>++++++++++++++++++++++++++++++++<<<<<<[>[>>>>>>+>+<<<<<<<-]>>>>>>>[<<<<<<<+>>>>>>>-]<[>++++++++++[-<-[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<[>>>+<<<-]>>[-]]<<]>>>[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<+>>[-]]<<<<<<<]>>>>>[++++++++++++++++++++++++++++++++++++++++++++++++.[-]]++++++++++<[->-<]>++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<<<<<<<[>>>+>+<<<<-]>>>>[<<<<+>>>>-]<-[>>.>.<<<[-]]<<[>>+>+<<<-]>>>[<<<+>>>-]<<[<+>-]>[<+>-]<<<-]", char.ConvertFromUtf32(10)));
         }
     }

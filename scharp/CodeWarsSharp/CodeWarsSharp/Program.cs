@@ -8,7 +8,7 @@ namespace CodeWarsSharp {
 
             byte t1 = 255;
             t1++;
-            Console.WriteLine(Char.ConvertFromUtf32(Char.ConvertToUtf32("Codewars", 0)));
+            Console.WriteLine((Char.ConvertToUtf32("Codewars", 0)));
 
 
 

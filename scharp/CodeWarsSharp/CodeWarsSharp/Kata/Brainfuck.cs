@@ -8,7 +8,7 @@ namespace CodeWarsSharp.Kata {
         /// https://www.codewars.com/kata/526156943dfe7ce06200063e/train/csharp
         /// </summary>
         public static string Brainfuck(string code, string input) {
-            var cells = new byte[500];
+            var cells = new byte[100];
             var pointer = 0;
             var output = "";
             var inputPoiter = 0;
@@ -31,7 +31,23 @@ namespace CodeWarsSharp.Kata {
                         pointer--;
                         break;
                     case '[':
-                        bracketStack.Add(i);
+                        if (cells[pointer] == 0) {
+                            while (true) {
+                                var nextClose = code.IndexOf(']', i);
+                                var openBracketBeforeClose = code.IndexOf('[', i + 1);
+                                i = nextClose;
+                                if (openBracketBeforeClose < nextClose) {
+                                    i++;
+                                    continue;
+                                }
+                                else {
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            bracketStack.Add(i);
+                        }
                         break;
                     case ']':
                         if (cells[pointer] != 0) {
