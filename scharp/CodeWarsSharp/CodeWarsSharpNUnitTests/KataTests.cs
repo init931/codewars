@@ -109,6 +109,14 @@ namespace CodeWarsSharpNUnitTests {
             Assert.AreEqual(-1, Kata.EqualSidesOfAnArray(new int[] { 1, 2, 3, 4, 5, 6 }));
             Assert.AreEqual(3, Kata.EqualSidesOfAnArray(new int[] { 20, 10, 30, 10, 10, 15, 35 }));
         }
+
+        [Test]
+        public void Brainfuck() {
+            //Assert.AreEqual("Codewars", Kata.Brainfuck(",+[-.,+]", "Codewars" + char.ConvertFromUtf32(255)), "Should return \"Codewars\" ");
+            //Assert.AreEqual("Codewars", Kata.Brainfuck(",[.[-],]", "Codewars" + char.ConvertFromUtf32(0)), "Should return \"Codewars\" ");
+            //Assert.AreEqual(char.ConvertFromUtf32(72), Kata.Brainfuck(",>,<[>[->+>+<<]>>[-<<+>>]<<<-]>>.", char.ConvertFromUtf32(8) + char.ConvertFromUtf32(9)), "Should return H");
+            Assert.AreEqual("1, 1, 2, 3, 5, 8, 13, 21, 34, 55", Kata.Brainfuck(",>+>>>>++++++++++++++++++++++++++++++++++++++++++++>++++++++++++++++++++++++++++++++<<<<<<[>[>>>>>>+>+<<<<<<<-]>>>>>>>[<<<<<<<+>>>>>>>-]<[>++++++++++[-<-[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<[>>>+<<<-]>>[-]]<<]>>>[>>+>+<<<-]>>>[<<<+>>>-]+<[>[-]<[-]]>[<<+>>[-]]<<<<<<<]>>>>>[++++++++++++++++++++++++++++++++++++++++++++++++.[-]]++++++++++<[->-<]>++++++++++++++++++++++++++++++++++++++++++++++++.[-]<<<<<<<<<<<<[>>>+>+<<<<-]>>>>[<<<<+>>>>-]<-[>>.>.<<<[-]]<<[>>+>+<<<-]>>>[<<<+>>>-]<<[<+>-]>[<+>-]<<<-]", char.ConvertFromUtf32(10)));
+        }
     }
 
     public class Sample_Test {
