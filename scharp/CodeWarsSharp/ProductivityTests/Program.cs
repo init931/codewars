@@ -10,7 +10,7 @@ namespace ProductivityTests {
 
             //Benchmark.SeparateCpu на маке не работает. Можно попробовать запутить тест в докер контейнере под виндой
 
-            ArrayDiff();
+            GetPINs();
         }
 
         #region Kata
@@ -48,6 +48,13 @@ namespace ProductivityTests {
                 //Kata.ArrayDiff_HashSet(a, b); //66ms
                 Kata.ArrayDiff_FindAll(a, b); //72ms
             }, 100000, 1000);
+        }
+
+        static void GetPINs() {
+            var ms = Benchmark.Stopwatch(() => {
+                var a = "369";
+                Kata.GetPINs(a);
+            }, 1000, 100);
         }
         #endregion
     }

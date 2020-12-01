@@ -8,7 +8,7 @@ namespace CodeWarsSharp.Kata {
         /// https://www.codewars.com/kata/5263c6999e0f40dee200059d/train/csharp
         /// </summary>
         public static List<string> GetPINs(string observed) {
-            var ret = new List<string>();
+            var ret = new HashSet<int>();
             var bag = new int[observed.Length][];
 
             for (int i = 0; i < observed.Length; i++) {
@@ -16,49 +16,47 @@ namespace CodeWarsSharp.Kata {
                 bag[i] = getAdjacent(num);
             }
 
-            var round = new int[observed.Length];
-            for (int i = 0; i < bag.Length; i++) {
-                round[i] = bag[i][0]; //first init
-            }
             var pointer = new int[bag.Length];
             for (int i = 0; i < bag.Length; i++) {
                 pointer[i] = bag[i].Length; //init pointer
             }
 
-
-
             while(!pointer.All(x => x == 0)) {
-                var pin = string.Join("", round);
-                if (!ret.Contains(pin)) {
-                    ret.Add(pin);
+                var pin = 0.0;
+                for (int i = 0; i < bag.Length; i++) {
+                    pin += bag[i][pointer[i] - 1] * Math.Pow(10, bag.Length - 1 - i);
+                }
+                
+                if (!ret.Contains((int)pin)) {
+                    ret.Add((int)pin);
                 }
 
-                for (int i = pointer.Length - 1; i >= 0; i--) {
-                    if (pointer[i] > 0) {
-                        pointer[i]--;
-                        round[i] = bag[i][pointer[i]];
-                        break;
-                    }
-                    else {
-                        if (i > 0) {
-                            if (pointer[i - 1] == 0) {
-                                continue;
-                            }
-                            else {
-                                pointer[i - 1]--;
-                                round[i - 1] = bag[i - 1][pointer[i - 1]];
-                            }
-                            for (int j = i; j < bag.Length; j++) {
-                                pointer[j] = bag[j].Length;
-                                round[j] = bag[j][0];
-                            }
-                            break;
+                var offset = pointer.Length - 1;
+                pointer[offset]--;
+
+                if (pointer.All(x => x == 0)) {
+                    break;
+                }
+
+                while (pointer[offset] == 0) {
+                    if (offset > 0) {
+                        offset = offset - 1;
+                        while (pointer[offset] == 0) {
+                            offset--;
+                        }
+                        pointer[offset]--;
+                        if (pointer[offset] == 0) {
+                            continue;
+                        }
+                        for (int j = offset + 1; j < bag.Length; j++) {
+                            pointer[j] = bag[j].Length;
                         }
                     }
+                    break;
                 }
             }
-
-            return ret.Select(x => x.ToString()).ToList();
+            
+            return ret.Select(x => x.ToString($"D{observed.Length}")).ToList();
         }
 
         public static int[] getAdjacent(int num) {
