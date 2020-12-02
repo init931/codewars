@@ -8,7 +8,7 @@ namespace CodeWarsSharp {
     class Program {
         static void Main(string[] args) {
 
-            new CodeWarsSharp.Component.LinqSelectMany();
+            new CodeWarsSharp.Component.LinqAggregate();
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();

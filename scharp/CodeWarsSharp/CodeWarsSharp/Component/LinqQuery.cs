@@ -14,6 +14,11 @@ namespace CodeWarsSharp.Component {
                 new User {Name="Элис", Age=24, Languages = new List<string> {"испанский", "немецкий" }}
             };
 
+            List<Phone> phones = new List<Phone>() {
+                new Phone {Name="Lumia 630", Company="Microsoft" },
+                new Phone {Name="iPhone 6", Company="Apple"},
+            };
+
             var sel = from t in teams
                       where t.Length > 8
                       orderby t
@@ -24,7 +29,15 @@ namespace CodeWarsSharp.Component {
                                where lang == "немецкий"
                                select user.Name;
 
+            var let = from t in users
+                      let name = $"Mr. {t.Name}"
+                      where t.Age > 25
+                      orderby t.Age
+                      select name;
 
+            var twoSources = from user in users
+                             from phone in phones
+                             select new { User = user.Name, Phone = phone.Name };
 
             { }
         }
@@ -36,6 +49,11 @@ namespace CodeWarsSharp.Component {
             public User() {
                 Languages = new List<string>();
             }
+        }
+
+        class Phone {
+            public string Name { get; set; }
+            public string Company { get; set; }
         }
     }
 }
