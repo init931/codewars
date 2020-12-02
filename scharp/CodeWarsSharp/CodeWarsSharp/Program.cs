@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Linq;
 using CodeWarsSharp.Component;
 using CodeWarsSharp.Kata;
+using System.Collections.Generic;
 
 namespace CodeWarsSharp {
     class Program {
         static void Main(string[] args) {
 
-            Kata.Kata.GetPINs("369");
+            new CodeWarsSharp.Component.LinqSelectMany();
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();

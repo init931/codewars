@@ -53,7 +53,10 @@ namespace ProductivityTests {
         static void GetPINs() {
             var ms = Benchmark.Stopwatch(() => {
                 var a = "369";
-                Kata.GetPINs(a);
+                //Kata.GetPINs(a); //14ms
+                //Kata.GetPINs_Linq(a); //6ms
+                //Kata.GetPINs_Recursion(a); //2.5ms
+                Kata.GetPINs_Cartesian(a); //8ms
             }, 1000, 100);
         }
         #endregion
