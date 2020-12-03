@@ -8,7 +8,7 @@ namespace CodeWarsSharp {
     class Program {
         static void Main(string[] args) {
 
-            new CodeWarsSharp.Component.LinqTakeSkip();
+            new CodeWarsSharp.Component.LinqJoin();
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();
