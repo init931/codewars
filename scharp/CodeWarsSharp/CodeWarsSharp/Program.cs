@@ -8,7 +8,7 @@ namespace CodeWarsSharp {
     class Program {
         static void Main(string[] args) {
 
-            new CodeWarsSharp.Component.LinqJoin();
+            Kata.Kata.SinglePermutations("aabb");
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();

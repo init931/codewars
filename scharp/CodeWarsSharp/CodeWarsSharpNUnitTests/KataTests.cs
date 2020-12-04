@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using CodeWarsSharp.Kata;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CodeWarsSharpNUnitTests {
     [TestFixture]
@@ -136,6 +137,13 @@ namespace CodeWarsSharpNUnitTests {
         public void HighestRank() {
             Assert.AreEqual(12, Kata.HighestRank(new int[] { 12, 10, 8, 12, 7, 6, 4, 10, 12 }));
             Assert.AreEqual(12, Kata.HighestRank(new int[] { 12, 10, 8, 12, 7, 6, 4, 10, 12, 10 }));
+        }
+
+        [Test]
+        public void SinglePermutations() {
+            Assert.AreEqual(new List<string> { "a" }, Kata.SinglePermutations("a").OrderBy(x => x).ToList());
+            Assert.AreEqual(new List<string> { "ab", "ba" }, Kata.SinglePermutations("ab").OrderBy(x => x).ToList());
+            Assert.AreEqual(new List<string> { "aabb", "abab", "abba", "baab", "baba", "bbaa" }, Kata.SinglePermutations("aabb").OrderBy(x => x).ToList());
         }
     }
 
