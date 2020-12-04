@@ -131,6 +131,12 @@ namespace CodeWarsSharpNUnitTests {
                 CollectionAssert.AreEquivalent(pin.Value, Kata.GetPINs(pin.Key), "PIN: " + pin);
             }
         }
+
+        [Test]
+        public void HighestRank() {
+            Assert.AreEqual(12, Kata.HighestRank(new int[] { 12, 10, 8, 12, 7, 6, 4, 10, 12 }));
+            Assert.AreEqual(12, Kata.HighestRank(new int[] { 12, 10, 8, 12, 7, 6, 4, 10, 12, 10 }));
+        }
     }
 
     public class Sample_Test {
