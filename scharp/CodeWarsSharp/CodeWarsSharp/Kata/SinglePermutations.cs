@@ -6,6 +6,25 @@ using System.Text;
 namespace CodeWarsSharp.Kata {
     public partial class Kata {
         public static List<string> SinglePermutations(string s) {
+            //var res = new string[factorial(s.Length)];
+
+
+            var ret2 = new HashSet<string>();
+            for (int i = 0; i < s.Length; i++) {
+                var ch = s[i].ToString();
+                var str = s.Remove(i, 1);
+                { }
+                for (int j = 0; j < s.Length; j++) {
+                    var prem = str.Insert(j, ch);
+                    //if (!ret.Contains(prem)) {
+                    ret2.Add(prem);
+                    //}
+                }
+
+                { }
+            }
+
+
 
             var ret = new List<string>();
 
@@ -64,6 +83,15 @@ namespace CodeWarsSharp.Kata {
                 elems = elems.Zip(shifted, (e, sh) => $"{e}{sh}").ToList();
             }
             return elems.ToList();
+        }
+
+        private static int factorial(int f) {
+            if (f == 0) {
+                return 1;
+            }
+            else {
+                return f * factorial(f - 1);
+            }
         }
     }
 }
