@@ -9,5 +9,6 @@
     <Folder Include="Kata\" />
     <Folder Include="Component\" />
     <Folder Include="OOP\" />
+    <Folder Include="Algorithms\" />
   </ItemGroup>
 </Project>
