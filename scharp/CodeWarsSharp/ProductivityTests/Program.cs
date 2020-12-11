@@ -65,7 +65,6 @@ namespace ProductivityTests {
         #endregion
 
         #region Algorithms
-        [STAThread]
         static void Sort() {
             
             Benchmark.CsvGraph<int>(

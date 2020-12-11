@@ -16,10 +16,10 @@ namespace ProductivityTests {
             var content = new List<string>();
             var header = "dataCount";
             for (int i = 0; i < actions.Count; i++) {
-                header += $",action{i}";
+                header += $";action{i}";
             }
             content.Add(header);
-            Console.WriteLine(header.Replace(',', '\t'));
+            Console.WriteLine(header.Replace(';', '\t'));
 
             for (int i = 0; i < data.Count; i++) {
                 var line = data[i].Count().ToString();
@@ -27,9 +27,9 @@ namespace ProductivityTests {
                     var ms = Stopwatch(() => {
                         actions[j](data[i]);
                     }, iterations, warmups, false);
-                    line += $",{ms}";
+                    line += $";{ms}";
                 }
-                Console.WriteLine(line.Replace(',', '\t'));
+                Console.WriteLine(line.Replace(';', '\t'));
                 content.Add(line);
             }
 
