@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using CodeWarsSharp.Kata;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProductivityTests {
     class Program {
@@ -10,7 +13,7 @@ namespace ProductivityTests {
 
             //Benchmark.SeparateCpu на маке не работает. Можно попробовать запутить тест в докер контейнере под виндой
 
-            GetPINs();
+            Sort();
         }
 
         #region Kata
@@ -58,6 +61,29 @@ namespace ProductivityTests {
                 //Kata.GetPINs_Recursion(a); //2.5ms
                 Kata.GetPINs_Cartesian(a); //8ms
             }, 1000, 100);
+        }
+        #endregion
+
+        #region Algorithms
+        [STAThread]
+        static void Sort() {
+            
+            Benchmark.CsvGraph<int>(
+                new List<Action<int[]>> {
+                    CodeWarsSharp.Algorithms.InsertionSort.SortAsc,
+                    CodeWarsSharp.Algorithms.SelectionSort.SortAsc,
+                    CodeWarsSharp.Algorithms.MergeSort.MergeSortAsc
+                },
+                new List<int[]> {
+                    RandomGenerator.GetInt(1000, 1, 1000000),
+                    RandomGenerator.GetInt(10000, 1, 1000000),
+                    RandomGenerator.GetInt(100000, 1, 1000000),
+                    RandomGenerator.GetInt(1000000, 1, 1000000),
+                    RandomGenerator.GetInt(10000000, 1, 1000000),
+                    RandomGenerator.GetInt(100000000, 1, 1000000)
+                },
+                1, 0
+            );
         }
         #endregion
     }

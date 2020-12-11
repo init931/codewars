@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ProductivityTests {
     public static partial class Benchmark {
-        public static double Stopwatch(Action action, int iterations, int warmups = 1) {
+        public static double Stopwatch(Action action, int iterations, int warmups = 1, bool logging = true) {
             //clean Garbage
             GC.Collect();
 
@@ -30,11 +30,13 @@ namespace ProductivityTests {
                 }
                 stopwatch.Stop();
                 timings[i] = stopwatch.Elapsed.TotalMilliseconds;
-                Console.WriteLine($"ti {i}. {timings[i]:N4} ms");
+                //Console.WriteLine($"ti {i}. {timings[i]:N4} ms");
             }
             var nmean = timings.normalizedMean();
-            Console.WriteLine($"total nmean: {nmean:N4} ms");
-            return nmean;
+            if (logging) {
+                Console.WriteLine($"total nmean: {nmean:N4} ms");
+            }
+            return Math.Round(nmean, 4);
         }
 
         private static double normalizedMean(this ICollection<double> values) {
