@@ -8,9 +8,8 @@ namespace CodeWarsSharp {
     class Program {
         static void Main(string[] args) {
 
-            //var t1 = new int[] { 5, 2, 4, 7, 1, 3, 2, 6 };
-            var t1 = new int[] { 8, 7, 6, 5, 4, 3, 2, 1 };
-            Algorithms.BubbleSort.SortAsc(t1);
+            var t1 = new int[] { 16, 4, 10, 14, 7, 9, 3, 2, 8, 1 };
+            Algorithms.HeapSort.SortAsc(t1);
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();
