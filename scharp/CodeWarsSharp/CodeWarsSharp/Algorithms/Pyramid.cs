@@ -1,21 +1,21 @@
 ﻿using System;
 namespace CodeWarsSharp.Algorithms {
     public class Pyramid {
-        private static int parent(int i) {
+        public static int Parent(int i) {
             return ((i + 1) / 2) - 1;
         }
 
-        private static int left(int i) {
+        public static int Left(int i) {
             return ((i + 1) * 2) - 1;
         }
 
-        private static int right(int i) {
+        public static int Right(int i) {
             return (i + 1) * 2;
         }
 
         public static void MaxHeapify(int[] A, int aHeapSize, int i) {
-            var l = left(i);
-            var r = right(i);
+            var l = Left(i);
+            var r = Right(i);
             int largest;
 
             if (l < aHeapSize && A[l] > A[i]) {
