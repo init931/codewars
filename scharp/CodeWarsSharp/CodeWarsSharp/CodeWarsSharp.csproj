@@ -10,5 +10,6 @@
     <Folder Include="Component\" />
     <Folder Include="OOP\" />
     <Folder Include="Algorithms\" />
+    <Folder Include="DataStructures\" />
   </ItemGroup>
 </Project>

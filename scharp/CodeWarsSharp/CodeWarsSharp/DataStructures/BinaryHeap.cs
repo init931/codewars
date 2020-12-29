@@ -1,6 +1,7 @@
 ﻿using System;
-namespace CodeWarsSharp.Algorithms {
-    public class Pyramid {
+
+namespace CodeWarsSharp.DataStructures {
+    public class BinaryHeap {
         public static int Parent(int i) {
             return ((i + 1) / 2) - 1;
         }
