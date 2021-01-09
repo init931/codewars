@@ -11,5 +11,6 @@
     <Folder Include="OOP\" />
     <Folder Include="Algorithms\" />
     <Folder Include="DataStructures\" />
+    <Folder Include="DesignPatterns\" />
   </ItemGroup>
 </Project>
