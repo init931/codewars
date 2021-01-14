@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CodeWarsSharp.DesignPatterns {
+namespace CodeWarsSharp.Principles {
     public class SingleResponsibilityPrinciple {
         public SingleResponsibilityPrinciple() {
             var shapes = new IShape[] {
