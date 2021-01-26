@@ -6,7 +6,6 @@ using System.Linq;
 namespace CodeWarsSharpNUnitTests {
     [TestFixture]
     public class KataTests {
-
         [Test]
         public void DuplicateEncoder() {
             Assert.AreEqual(")))))(", Kata.DuplicateEncode(" ( ( )"));
@@ -57,11 +56,7 @@ namespace CodeWarsSharpNUnitTests {
 
         [Test]
         public void ProductOfConsecutiveFibNumbers() {
-            Assert.AreEqual(new ulong[] { 5, 8, 1 }, Kata.ProductOfConsecutiveFibNumbers(40));
             Assert.AreEqual(new ulong[] { 55, 89, 1 }, Kata.ProductOfConsecutiveFibNumbers(4895));
-            Assert.AreEqual(new ulong[] { 21, 34, 1 }, Kata.ProductOfConsecutiveFibNumbers(714));
-            Assert.AreEqual(new ulong[] { 34, 55, 0 }, Kata.ProductOfConsecutiveFibNumbers(800));
-            Assert.AreEqual(new ulong[] { 0, 1, 1 }, Kata.ProductOfConsecutiveFibNumbers(0));
         }
 
         [Test]

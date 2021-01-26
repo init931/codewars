@@ -17,6 +17,8 @@ namespace CodeWarsSharp.Kata {
             ulong n1 = 0;
             ulong n2 = 1;
             while (true) {
+                var n3 = n1 + n2;
+
                 if (n1 * n2 == prod) {
                     return new ulong[] { n1, n2, 1 };
                 }
@@ -25,7 +27,7 @@ namespace CodeWarsSharp.Kata {
                 }
 
                 n1 = n2;
-                n2 = n1 + n2;
+                n2 = n3;
             }
         }
 
