@@ -8,7 +8,7 @@ namespace CodeWarsSharp {
     class Program {
         static void Main(string[] args) {
 
-            new DesignPatterns.SingleResponsibilityPrinciple();
+            //new DesignPatterns.SingleResponsibilityPrinciple();
 
             Console.WriteLine("Hello World!");
             Console.ReadLine();
