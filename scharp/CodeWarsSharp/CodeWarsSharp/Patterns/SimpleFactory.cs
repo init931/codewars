@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CodeWarsSharp.Patterns.SimpleFactory {
+    /// <summary>
+    /// https://www.codeproject.com/Articles/1131770/Factory-Patterns-Simple-Factory-Pattern
+    /// </summary>
     class SimpleFactory {
         public SimpleFactory() {
             IFanFactory simpleFactory = new FanFactory();

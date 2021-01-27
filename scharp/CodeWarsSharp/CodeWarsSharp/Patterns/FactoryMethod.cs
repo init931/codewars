@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CodeWarsSharp.Patterns.FactoryMethod {
+    /// <summary>
+    /// https://www.codeproject.com/Articles/1135918/Factory-Patterns-Factory-Method-Pattern
+    /// </summary>
     class FactoryMethod {
         public FactoryMethod() {
             var fanFactory = new Fan2Factory();
