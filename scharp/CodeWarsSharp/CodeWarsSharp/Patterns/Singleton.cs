@@ -8,9 +8,10 @@ namespace CodeWarsSharp.Patterns.Singleton {
 
         private Singleton() { }
 
-        public static Singleton getInstance() {
-            if (_instance == null)
+        public static Singleton GetInstance() {
+            if (_instance == null) {
                 _instance = new Singleton();
+            }
             return _instance;
         }
     }
