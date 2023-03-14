@@ -13,7 +13,8 @@ namespace ProductivityTests {
 
             //Benchmark.SeparateCpu на маке не работает. Можно попробовать запутить тест в докер контейнере под виндой
 
-            Sort();
+//Console.WriteLine("start");
+            ArrayDiff();
         }
 
         #region Kata
@@ -44,13 +45,49 @@ namespace ProductivityTests {
         }
 
         static void ArrayDiff() {
-            var ms = Benchmark.Stopwatch(() => {
-                int[] a = new int[] { 1, 2, 2,3,4,5,2,3,4,1 }, b = new int[] { 1,4,8 };
-                //Kata.ArrayDiff(a, b); //72ms
-                //Kata.ArrayDiff_Linq(a, b); //85ms
-                //Kata.ArrayDiff_HashSet(a, b); //66ms
-                Kata.ArrayDiff_FindAll(a, b); //72ms
-            }, 100000, 1000);
+            var func = (int[] a, int[] b) => {
+                Console.WriteLine();
+                Console.WriteLine($"a.count={a.Length} b.count={b.Length}");
+                var ms = Benchmark.Stopwatch(() => {
+                    Kata.ArrayDiff(a, b); //39ms
+                }, 100000, 1000, false);
+                Console.WriteLine($"ArrayDiff: {ms:N4} ms");
+                var ms2 = Benchmark.Stopwatch(() => {
+                    Kata.ArrayDiff_Linq(a, b); //85ms
+                }, 100000, 1000, false);
+                Console.WriteLine($"ArrayDiff_Linq: {ms2:N4} ms");
+                var ms3 = Benchmark.Stopwatch(() => {
+                    Kata.ArrayDiff_HashSet(a, b); //66ms
+                }, 100000, 1000, false);
+                Console.WriteLine($"ArrayDiff_HashSet: {ms3:N4} ms");
+                var ms4 = Benchmark.Stopwatch(() => {
+                    Kata.ArrayDiff_FindAll(a, b); //72ms
+                }, 100000, 1000, false);
+                Console.WriteLine($"ArrayDiff_FindAll: {ms4:N4} ms");
+            };
+
+            int[] a = new int[] { 1, 2, 2,3,4,5,2,3,4,1 }, b = new int[] { 1,4,8 };
+            func(a, b);
+
+            Random rand = new Random();
+            var func_rand = (int[] a) => {
+                for (int i = 0; i < a.Length; i++) {
+                    a[i] = rand.Next(1, 1000);
+                }
+            };
+            a = new int[50]; func_rand(a);
+            b = new int[10]; func_rand(b);
+            func(a, b);
+
+            a = new int[50]; func_rand(a);
+            b = new int[20]; func_rand(b);
+            func(a, b);
+
+            a = new int[1000]; func_rand(a);
+            b = new int[50]; func_rand(b);
+            func(a, b);
+
+
         }
 
         static void GetPINs() {
